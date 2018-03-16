@@ -1,0 +1,84 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!-- You might want to try something fancier: -->
+<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
+<!-- pug: https://pugjs.org/ -->
+<!-- haml: http://haml.info/ -->
+<!-- hbs(handlebars): http://handlebarsjs.com/ -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FreeCodeCamp Image Search Abstraction API Project</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    
+    <header>
+      <h1>
+        FreeCodeCamp Image Search Abstraction API Project
+      </h1>
+    </header>
+
+    <main>
+      <h2>
+        User Stories
+      </h2>
+      <ul>
+        <li>I can get the image URLs, alt text and page urls for a set of images relating to a given search string.</li>
+        <li>I can paginate through the responses by adding a ?offset=2 parameter to the URL.</li>
+        <li>I can get a list of the most recently submitted search strings.</li>
+      </ul>
+
+      <h2>
+        Examples
+      </h2>
+        <ul>
+          <li><a href="https://quiver-smash.glitch.me/api/imagesearch/lolcats%20funny?offset=10">
+            https://quiver-smash.glitch.me/api/imagesearch/lolcats%20funny?offset=10</a></li>
+          <li><a href="https://quiver-smash.glitch.me/api/latest/imagesearch">
+            https://quiver-smash.glitch.me/api/latest/imagesearch</a></li>
+        </ul>
+      
+      <h2>
+        Discussion
+      </h2>
+      <p>
+        We leverage a third party API to actually perform the real image lookup, as 
+        <a href="https://forum.freecodecamp.org/t/image-search-abstraction-layer-here-are-some-instructions-for-working-with-google-custom-search/115982">
+          recommended by FCC.</a> We consume this data and reformat it to return in the format implicitly specified.       
+      </p>
+      <p>
+        Regarding returning the search history, we save approximately the last 10 search terms in a MongoDB database. 
+        With each new query we add the new search term, then prune the DB collection to the last 10. When looking for 
+        the latest image searches, we simply query all documents in the DB, format them, and return them.
+      </p>
+    </main>
+    
+    <footer>
+      <p>
+      <a href="https://glitch.com">
+        Remix this in Glitch
+      </a>
+      </p>
+      <p>
+      <a href="https://www.freecodecamp.org/challenges/image-search-abstraction-layer" target="_blank">
+      FreeCodeCamp project reference
+      </a>
+      </p>
+    </footer>
+
+    <!-- Your web-app is https, so your scripts need to be too -->
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+            crossorigin="anonymous"></script>
+    <script src="/client.js"></script>
+
+  </body>
+</html>
